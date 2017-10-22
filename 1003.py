@@ -1,44 +1,55 @@
 # _*_ coding:utf-8 _*_
 __author__ = 'JiangKui'
 __date__ = '2017/6/15 16:49'
-import re
 
 #times = raw_input()
-times = 1
 
+#主循环
+def judge(str):
+        char = list(str[::])
+        a = 0
+        b = 0
+        c = 0
+        for j in range(len(char)):
+            if char[j] == 'A':
+                a = 1
+            elif char[j] == 'P':
+                b = 1
+            elif char [j] == 'T':
+                c = 1
+            else:
+                return False
+            j = j + 1
+        if a != 1 or b !=1 or c !=1:
+            return False
+
+        count = [0, 0, 0]  # 设置一个3重计数器
+        pos = 0
+        i = 0
+        while i <= len(char)-1:
+            if char[i] == 'A':
+                count[pos] = count[pos] + 1
+            elif char[i] == 'P':
+                pos = 1
+            elif char[i] == 'T':
+                pos = 2
+            else:
+                break
+            i = i+1
+        #判断计数结果是否符合预期
+
+        if (count[2]) != (count[1])*count[0]:
+            return False
+        else:
+            return True
+
+
+times = int(raw_input("")) # 获取字符串数量
 while times > 0:
-    str1 = raw_input("Q")
-    list1 = list(str1)
-    i = 0
-    if re.search(r'^[P,A,T]',str1):
-        print "NO"
-    elif re.search(r"^[PAT]",str):
-        print "NO"
-    elif re.search(r"^[PAT]", str):
-
-    elif re.search(r"^[PAT]", str):
-
-
-
-
-        # for i in range(len(list1)):
-    #     if (list1[i] == 'P'|list1[i] == 'A'|list1[i] == 'T')&():
-    #         continue
-    #     else:
-    #         print 'NO'
-    #         break
-    #
-
-
-
-
-
-    if q:
+    str = raw_input("")  # 获取字符串
+    result = judge(str)
+    if result == True:
         print "YES"
     else:
-        print  "NO"
-
-
-
-
-    times = times -1
+        print "NO"
+    times = times - 1

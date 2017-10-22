@@ -11,3 +11,7 @@ while i >0:
     i = i - 1
     print "Case #",i,z
 
+8
+PT
+if count[0] == 0 or count[1] == 0 or count[2] == 0 or pos != 2:
+    return False
