@@ -12,15 +12,15 @@ def judge(str):
         c = 0
         for j in range(len(char)):
             if char[j] == 'A':
-                a = 1
+                a = a+1
             elif char[j] == 'P':
-                b = 1
+                b = b+1
             elif char [j] == 'T':
-                c = 1
+                c = c+1
             else:
                 return False
             j = j + 1
-        if a != 1 or b !=1 or c !=1:
+        if a == 0 or b ==0 or c ==0 or b>1 or c>1:
             return False
 
         count = [0, 0, 0]  # 设置一个3重计数器
@@ -29,16 +29,16 @@ def judge(str):
         while i <= len(char)-1:
             if char[i] == 'A':
                 count[pos] = count[pos] + 1
-            elif char[i] == 'P':
+            elif char[i] == 'P' and pos == 0:
                 pos = 1
-            elif char[i] == 'T':
+            elif char[i] == 'T' and pos == 1:
                 pos = 2
             else:
-                break
+                return False
             i = i+1
         #判断计数结果是否符合预期
 
-        if (count[2]) != (count[1])*count[0]:
+        if (count[2]) != (count[1])*count[0] and count[0]!=0 :
             return False
         else:
             return True
